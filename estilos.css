@@ -1,0 +1,674 @@
+/* =========================================================
+   Taller Raíz — estilos.css
+   Paleta: tinta #1E2A33, papel #EDE7D8, mostaza #D9A441,
+           óxido #A6472B, musgo #5B7A5E, texto #2A2420
+   Tipografía: Fraunces (display), Space Grotesk (cuerpo/UI),
+               IBM Plex Mono (etiquetas y metadatos)
+   ========================================================= */
+
+:root {
+  --ink: #1E2A33;
+  --paper: #EDE7D8;
+  --paper-dark: #DDD3B8;
+  --mustard: #D9A441;
+  --rust: #A6472B;
+  --moss: #5B7A5E;
+  --text: #2A2420;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Space Grotesk", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  --radius: 6px;
+  --max-width: 1080px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.55;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--rust);
+  outline-offset: 2px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin: 0 0 0.5rem;
+}
+
+/* ---------- Encabezado ---------- */
+
+.site-header {
+  background-color: var(--ink);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 3px solid var(--mustard);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--paper-dark);
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--paper);
+  border-bottom-color: var(--mustard);
+}
+
+/* ---------- Contenido general ---------- */
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--paper-dark);
+}
+
+.section:first-child { border-top: none; }
+
+.section-head h2,
+.page-intro h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.section-head { max-width: 640px; margin-bottom: 2rem; }
+
+.section-cta {
+  text-align: center;
+  padding: 1rem 0 3rem;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 4rem 0 3rem;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.12;
+  margin: 0 0 1.2rem;
+  font-weight: 700;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--rust);
+}
+
+.hero-lead {
+  max-width: 46ch;
+  font-size: 1.05rem;
+  color: #4a4238;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.8rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Botones ---------- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--ink);
+  transition: transform 0.12s ease, background-color 0.12s ease, color 0.12s ease;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.btn-primary:hover {
+  background-color: var(--rust);
+  border-color: var(--rust);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--ink);
+}
+
+.btn-ghost:hover {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+/* ---------- Boleto (elemento firma) ---------- */
+
+.ticket {
+  display: flex;
+  background-color: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 26px rgba(30, 42, 51, 0.14);
+  overflow: hidden;
+  position: relative;
+}
+
+.ticket-stub {
+  flex: 0 0 96px;
+  background-color: var(--mustard);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 0.5rem;
+  border-right: 2px dashed rgba(30, 42, 51, 0.35);
+  position: relative;
+}
+
+.ticket-stub::before,
+.ticket-stub::after {
+  content: "";
+  position: absolute;
+  right: -9px;
+  width: 18px;
+  height: 18px;
+  background-color: var(--paper);
+  border-radius: 50%;
+}
+
+.ticket-stub::before { top: -9px; }
+.ticket-stub::after { bottom: -9px; }
+
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.stub-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin: 0;
+}
+
+.ticket-body {
+  padding: 1.4rem 1.6rem;
+  flex: 1;
+}
+
+.ticket-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--moss);
+  margin: 0 0 0.3rem;
+}
+
+.ticket-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.ticket-desc {
+  margin: 0 0 0.8rem;
+  font-size: 0.95rem;
+  color: #4a4238;
+}
+
+.ticket-meta {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Tarjetas de catálogo (variante del boleto) */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
+
+.ticket-card {
+  flex-direction: column;
+  height: 100%;
+}
+
+.ticket-card .ticket-stub {
+  flex-direction: row;
+  justify-content: flex-start;
+  border-right: none;
+  border-bottom: 2px dashed rgba(30, 42, 51, 0.35);
+  padding: 0.7rem 1.2rem;
+}
+
+.ticket-card .ticket-stub::before,
+.ticket-card .ticket-stub::after {
+  top: auto;
+  right: auto;
+}
+
+.ticket-card .ticket-stub::before { bottom: -9px; left: -9px; }
+.ticket-card .ticket-stub::after { bottom: -9px; right: -9px; }
+
+.tag-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-list li {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background-color: var(--paper);
+  border: 1px solid var(--paper-dark);
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+}
+
+/* ---------- Estadísticas ---------- */
+
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--rust);
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Cómo funciona ---------- */
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+
+.how-item {
+  background-color: #fff;
+  border: 1px solid var(--paper-dark);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+}
+
+.how-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.how-item h3 {
+  font-family: var(--font-display);
+  margin: 0 0 0.4rem;
+}
+
+.how-item p { margin: 0; color: #4a4238; }
+
+/* ---------- Tabla ---------- */
+
+.table-wrap {
+  overflow-x: auto;
+  background-color: #fff;
+  border-radius: var(--radius);
+  border: 1px solid var(--paper-dark);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+thead {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+th, td {
+  text-align: left;
+  padding: 0.8rem 1rem;
+}
+
+th {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+tbody tr:nth-child(even) { background-color: var(--paper); }
+
+tbody tr:not(:last-child) td { border-bottom: 1px solid var(--paper-dark); }
+
+/* ---------- Página de introducción (talleres / contacto) ---------- */
+
+.page-intro {
+  padding: 3rem 0 1rem;
+  max-width: 640px;
+}
+
+/* ---------- Formulario de contacto ---------- */
+
+.contact-section {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.form-ticket {
+  background-color: #fff;
+  border-radius: var(--radius);
+  border: 2px dashed var(--paper-dark);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-ticket-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--moss);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--paper-dark);
+}
+
+.form-row { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.form-row.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-row label,
+fieldset.form-row legend {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+
+fieldset.form-row {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--paper-dark);
+  border-radius: var(--radius);
+  background-color: var(--paper);
+  color: var(--text);
+}
+
+textarea { resize: vertical; }
+
+.radio-group {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+
+.radio-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  background-color: var(--paper);
+  border: 1px solid var(--paper-dark);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--text);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: normal;
+  color: #4a4238;
+}
+
+.form-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--moss);
+  margin: 0;
+}
+
+.info-card {
+  background-color: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+}
+
+.info-card .ticket-eyebrow { color: var(--mustard); }
+
+.contact-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.92rem;
+}
+
+.contact-list .stamp {
+  border-color: var(--paper);
+  flex-shrink: 0;
+}
+
+.contact-list .stamp svg path,
+.contact-list .stamp svg rect,
+.contact-list .stamp svg circle {
+  stroke: var(--paper);
+}
+
+/* ---------- Cinta decorativa ---------- */
+
+.tape {
+  display: none;
+}
+
+/* ---------- Pie de página ---------- */
+
+.site-footer {
+  background-color: var(--ink);
+  color: var(--paper-dark);
+  margin-top: 3rem;
+  padding: 2.5rem 1.5rem 1.5rem;
+}
+
+.footer-grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(237, 231, 216, 0.2);
+}
+
+.footer-brand {
+  color: var(--paper);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.footer-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--mustard);
+  margin: 0 0 0.3rem;
+}
+
+.footer-grid p { margin: 0; font-size: 0.9rem; }
+
+.footer-note {
+  max-width: var(--max-width);
+  margin: 1.2rem auto 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: rgba(237, 231, 216, 0.6);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .how-grid { grid-template-columns: 1fr; }
+  .contact-section { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .site-header { flex-direction: column; align-items: flex-start; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .form-row.two-col { grid-template-columns: 1fr; }
+  .stats-row { gap: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
